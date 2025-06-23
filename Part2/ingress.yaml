@@ -24,6 +24,7 @@ spec:
             name: service2
             port:
               number: 80
+  - host: ""
     http:
       paths:
       - path: /
