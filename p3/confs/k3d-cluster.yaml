@@ -1,0 +1,15 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: iot-cluster
+servers: 1
+agents: 2
+ports:
+  - port: 8888:8888
+    nodeFilters:
+      - loadbalancer
+options:
+  k3s:
+    extraArgs:
+        - nodeFilters:
+          - server:*
