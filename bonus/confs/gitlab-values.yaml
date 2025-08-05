@@ -1,0 +1,11 @@
+global:
+  hosts:
+    domain: localhost
+    externalIP: 127.0.0.1
+  ingress:
+    configureCertmanager: false
+    enabled: false
+  gitlab:
+    webservice:
+      externalPort: 8080
+      externalUrl: "http://localhost:8080"
