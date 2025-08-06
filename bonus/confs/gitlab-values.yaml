@@ -1,11 +1,66 @@
+certmanager-issuer:
+  email: adeleminian@gmail.com 
+
 global:
+  edition: ce
   hosts:
     domain: localhost
+    host: localhost
     externalIP: 127.0.0.1
+    https: false
+    httpPort: 8080
+    httpsPort: 8443
+
   ingress:
     configureCertmanager: false
     enabled: false
-  gitlab:
-    webservice:
-      externalPort: 8080
-      externalUrl: "http://localhost:8080"
+
+  railsSecrets:
+    secretKeyBase: "a-very-secret-key-that-is-at-least-30-characters-long"
+
+  appConfig:
+    omniauth:
+      allowSingleSignOn: ['gitlab']
+    initialDefaults:
+      signup_enabled: true
+
+# gitlab-runner:
+#   install: true
+#   gitlabUrl: "http://localhost:8080/"
+#   runnerRegistrationToken: "<YOUR_TOKEN>"   # Replace with your real token
+#   runners:
+#     executor: "kubernetes"
+#     namespace: "gitlab"
+
+gitlab:
+  webservice:
+    ingress:
+      tls:
+        enabled: false
+    resources:
+      requests:
+        cpu: 500m
+        memory: 1Gi
+      limits:
+        cpu: 1
+        memory: 2Gi
+
+postgresql:
+  install: true
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
+redis:
+  install: true
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 200m
+      memory: 512Mi
