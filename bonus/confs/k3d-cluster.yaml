@@ -5,7 +5,7 @@ metadata:
 servers: 1
 agents: 2
 ports:
-  - port: 8080:8080  # 👈 expose GitLab
+  - port: 8080:8080 
     nodeFilters:
       - loadbalancer
 options:

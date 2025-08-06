@@ -14,7 +14,7 @@ helm install traefik traefik/traefik --namespace kube-system
 helm repo add gitlab https://charts.gitlab.io/
 helm repo update
 kubectl create namespace gitlab
-helm install gitlab gitlab/gitlab -f confs/gitlab-values.yaml --namespace gitlab
+helm install gitlab gitlab/gitlab -f ../confs/gitlab-values.yaml --namespace gitlab
 helm repo add gitlab-runner https://charts.gitlab.io/
 helm repo update
 kubectl create namespace gitlab-runner
