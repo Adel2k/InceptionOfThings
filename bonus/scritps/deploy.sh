@@ -1,4 +1,4 @@
-k3d cluster create gitlab-cluster \
+k3d cluster create iot-cluster \
   --agents 2 \
   --port "8080:80@loadbalancer" \
   --port "8443:443@loadbalancer"
@@ -19,4 +19,4 @@ helm repo add gitlab-runner https://charts.gitlab.io/
 helm repo update
 kubectl create namespace gitlab-runner
 
-helm install gitlab-runner gitlab-runner/gitlab-runner --namespace gitlab-runner
+helm install gitlab-runner gitlab-runner/gitlab-runner -f ../confs/gitlab-values.yml --namespace gitlab-runner

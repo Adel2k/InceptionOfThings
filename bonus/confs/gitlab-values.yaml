@@ -12,9 +12,9 @@ global:
     httpsPort: 8443
 
   ingress:
-    configureCertmanager: false
+    configureCertmanager: true
     enabled: false
-
+  externalUrl: http://localhost:8080
   railsSecrets:
     secretKeyBase: "a-very-secret-key-that-is-at-least-30-characters-long"
 
@@ -23,14 +23,6 @@ global:
       allowSingleSignOn: ['gitlab']
     initialDefaults:
       signup_enabled: true
-
-# gitlab-runner:
-#   install: true
-#   gitlabUrl: "http://localhost:8080/"
-#   runnerRegistrationToken: "<YOUR_TOKEN>"   # Replace with your real token
-#   runners:
-#     executor: "kubernetes"
-#     namespace: "gitlab"
 
 gitlab:
   webservice:
@@ -44,6 +36,19 @@ gitlab:
       limits:
         cpu: 1
         memory: 2Gi
+        
+gitlab:
+  workhorse:
+    enabled: true
+    service:
+      type: ClusterIP
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
 
 postgresql:
   install: true

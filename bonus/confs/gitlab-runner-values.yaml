@@ -1,0 +1,13 @@
+gitlabUrl: http://localhost/
+runnerRegistrationToken: "GR1348941BYBzQfj_vCKzY1ewBVrn"
+
+runners:
+  config: |
+    [[runners]]
+      executor = "shell"
+
+rbac:
+  create: true
+
+serviceAccount:
+  create: true
